@@ -24,7 +24,7 @@ module Taxable
     raise NotImplementedError
   end
 
-  # @return [Float]
+  # @return [Boolean]
   def imported?
     raise NotImplementedError
   end

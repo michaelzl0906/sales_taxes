@@ -10,6 +10,16 @@ module Receiptable
     raise NotImplementedError
   end
 
+  # @return [Numeric]
+  def total_tax
+    raise NotImplementedError
+  end
+
+  # @return [Numeric]
+  def total_price
+    raise NotImplementedError
+  end
+
   # Generate receipt in CSV format
   # @return [String]
   def receipt
@@ -27,19 +37,9 @@ module Receiptable
 
   private
 
-  # @param number [Float]
-  # @return [Float]
+  # @param number [Numeric]
+  # @return [String]
   def to_currency(number)
     format '%.2f', number
-  end
-
-  # @return [Float]
-  def total_tax
-    @total_tax ||= @products.sum(&:tax)
-  end
-
-  # @return [Float]
-  def total_price
-    @total_price ||= @products.sum(&:total_price)
   end
 end

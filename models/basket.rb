@@ -17,4 +17,14 @@ class Basket
   def <<(product)
     @products << product
   end
+
+  # @return [Numeric]
+  def total_tax
+    @total_tax ||= @products.sum(&:tax)
+  end
+
+  # @return [Numeric]
+  def total_price
+    @total_price ||= @products.sum(&:total_price)
+  end
 end
